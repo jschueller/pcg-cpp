@@ -46,7 +46,7 @@
 int main()
 {
     // Make a random number engine 
-    pcg32 rng(0);
+    pcg64 rng(0);
 
     // save state
     std::stringstream stream;
@@ -64,7 +64,7 @@ int main()
     std::normal_distribution<> normal_dist(mean, 2);
     
     // Make a copy of the RNG state to use later
-    pcg32 rng_checkpoint = rng;
+    pcg64 rng_checkpoint = rng;
  
     std::map<int, int> hist;
     for (int n = 0; n < 10000; ++n) {
