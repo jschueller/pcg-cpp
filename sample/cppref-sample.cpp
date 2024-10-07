@@ -39,16 +39,21 @@
 #include <map>
 #include <random>
 #include <cmath>
+#include <sstream>
 
 #include "pcg_random.hpp"
  
 int main()
 {
-    // Seed with a real random value, if available
-    pcg_extras::seed_seq_from<std::random_device> seed_source;
-  
     // Make a random number engine 
-    pcg32 rng(seed_source);
+    pcg32 rng(0);
+
+    // save state
+    std::stringstream stream;
+    stream << rng;
+
+    //reload stream
+    stream >> rng;
 
     // Choose a random mean between 1 and 6
     std::uniform_int_distribution<int> uniform_dist(1, 6);
